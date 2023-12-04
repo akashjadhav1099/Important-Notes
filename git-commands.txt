@@ -1,0 +1,109 @@
+Configuring Git:
+	git config --global user.name "My Name"
+	git config --global user.email "myemail@email.com"
+	git config --list
+
+Remote --> Github, GitLab
+Local --> our laptop or pc
+Repository --> File
+
+Clone & Status:
+	clone- Cloning(Copying) a repository on our local machine
+     		git clone <-some link>
+
+	status- display the state of the code
+		git status
+
+cd- change directory --> to go inside the folder
+ls- list command 
+ls -a --> tells hidden file
+pwd --> present workig directory
+clear --> to clear terminal
+q --> quit
+
+Status -> 
+	Untracked --> new files that git doesn't yet track
+	modified --> changed
+	staged --> file is ready to be committed
+	unmodified --> unchanged
+
+		change    / newfile
+		(modified) (untracked)
+			|
+			add (staged)
+			|
+			commit(unchanged)
+
+Add & Commit:
+	add --> add new or hanged filesin ur working directory to the git staging area
+		git add <-file name->
+
+	commit --> It is the record of change
+		git commit -m "some message"
+
+Push --> upload local repo content to remote repo
+	git push origin main
+
+Init Command:
+init --> used to create a new git repo
+	git init
+	git remote add origin <-link->
+	git remote -v --> to verify remote
+	git branch --> to check branch
+	git branch -M main --> to rename branch
+	git push -u origin main
+
+-u means upstream --> will tells that main is our main branch 
+			Then we don't need to specify origin main further 
+			we can directly push our code by git push
+
+best Workflow as compare to above steps-->
+Local git	Github Repo
+		  |
+		clone
+		  |
+		changes
+		  |
+		add
+		  |
+		commit
+		  |
+		push
+
+git log --> to see history
+
+Branch Commands:
+	git branch  --> to check branch
+	git branch -M ain (to rename branch)
+	git checkout <-branch name-> (to navigate to oher branch)
+	git checkout -b <-new branch name->  (to create new branch)
+	git branch -d <-branch name-> (to delete branch)
+
+Merging Code:
+	Way1 -> 
+		git diff <-branch name-> (to compare commits, branches, files and more)
+		git merge <-branch name> (to merge 2 branches)
+
+	Way2 ->
+		create a PR (Pull Request)
+
+Pull Request -> It lets u tell other changes u have pushed to a branch in a repository on Github
+
+Pull Command:
+	git pull origin main --> used to fetch and download content from a remote repo and 
+				immediately update the local repo to match that content
+
+Resolving Merge Conflicts -->
+An event that takes place when Git is used to automatically resolve differnces in code between two commits
+
+Undoing Changes:
+Case1 -> Staged changes
+	git reset <-file name->
+	git reset
+
+case2 -> comited changes (for one commit)
+	git reset HEAD~1
+
+case2 -> commited changes (for many commits)
+	git reset <-commit hash->
+	git reset --hard <--commit hash->
