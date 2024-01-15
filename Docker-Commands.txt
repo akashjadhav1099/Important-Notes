@@ -1,0 +1,114 @@
+Docker Commands:
+
+				--------------
+				| Applicaion |
+				--------------
+				| Software   |
+				--------------
+				| OS         |
+				--------------
+				| Hardware   |
+				--------------
+			    TRADITONAL DEPLOYMENT
+
+
+DOCKER ->
+	Create Docker image for each microservices
+	Docker image contains everything a microservice needs to run:
+		Application Runtime (JDK or Python orNode JS)
+		Application code
+		Dependencies
+
+	You can run these docker containers the same way on any infrastructure
+		Your local machine
+		Corporate data center
+		Cloud
+
+	---------------   ---------------  --------------
+	| Container 1 |   | Container 2 |  | Container 3 |
+	-------------------------------------------------
+	|             DockerEngine                       |
+	--------------------------------------------------
+	|             HostOS                             |
+	--------------------------------------------------
+	|             CloudInfraStructure                |
+	--------------------------------------------------
+
+Docker Architecture:  
+			-----------------
+			| Docker Client |
+			-----------------
+				
+				|
+
+			-----------------
+			| Docker Daemon |
+			-----------------
+				
+			/       |       \
+
+	-------------  ----------------  ------------------
+	| Containers|  | Local Images |  | Image Registry |
+	-------------  ----------------  ------------------
+
+Important commands:
+	1.docker --version  --> check docker installed version
+	
+	2.docker run -p 5000:5000 in28min/todo-rest-api-h2:1.0.0.RELEASE
+				OR                                               
+	docker container run -p 5000:5000 n28min/todo-rest-api-h2:1.0.0.RELEASE
+			       (hostport: containerport)
+			   
+                it runs the container .. if image is not there on local Image then it will download first then run
+
+		we can run the same image on different port
+			docker run -p 5001:5000 in28min/todo-rest-api-h2:1.0.0.RELEASE
+
+	3. ctrl + c -> stop the running image (container) 
+
+	4. docker run -p 5000:5000 -d in28min/todo-rest-api-h2:1.0.0.RELEASE   -> It will run container in detached mode means by entering ctrl + v , it will not stop the container
+
+	5. docker logs 59c2ae37d831b00c83086ad85cd27334e6c18220f7a10f32ebcf29afe6acc706    -> will show the logs of container
+		
+		docker logs -f 59c2a -> will show logs on force mode. If we hit the url again and again. logs will change by allowing in -f mode
+ 
+	6. docker container ls  ->  shows all the container who are running
+	
+		 docker container ls -a ->  shows all the container who are running as well as exited i.e it will show all the container present in docker desktop (local machine)
+
+	7. docker images  -> shows all the images 
+
+	8. docker container stop 0c9f  -> stop the running container gracefully step by step
+		
+		docker container kill 0c9f  -> Immediately shut down or stop the running container  (Not good practice)
+
+	9. docker tag in28min/todo-rest-api-h2:1.0.0.RELEASE in28min/todo-rest-api-h2:latest    -> will change the tag from old tage  like here 1.0.0.RELEASE -> latest
+
+	10. docker pull mysql  -> It only download the image of mysql (not run).
+
+	11. docker Searches mysql   -> It will search the required image on image registry (docker hub)
+
+	12. docker image history  9d05dd98f4a4  -> tells the history of the mentioned image
+
+	13. docker image inspect  9d05dd98f4a4  -> tells all the details of image
+
+	14. docker image inspect  9d05dd98f4a4   -> Remove the image from Docker Desktop
+
+	15. docker container pause eaccd4  ->  It pause the container
+
+	16. docker container unpause eaccd4 -> It unpause the container
+
+	17. docker container prune -> this will remove all the stopped container
+
+	18. docker run -p 5000:5000 -d --restart=always in28min/todo-rest-api-h2:1.0.0.RELEASE  -> start the container everytime when docker desktop is opened
+
+	19. docker events  -> tells what happened in background when a container is running
+
+	20. docker top 8d49  -> tells all the processes running in the container
+
+	21. docker stats  -> tells all the stats of running container
+
+	22. docker run -p 5001:5000 -m 512m --cpu-quota 50000 -d in28min/todo-rest-api-h2:1.0.0.RELEASE  -> running container takes 512m memory and 50 % cpu 
+
+	23. docker system df -> tell all the details regarding container which are there in system	
+		
