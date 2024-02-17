@@ -107,3 +107,6 @@ case2 -> comited changes (for one commit)
 case2 -> commited changes (for many commits)
 	git reset <-commit hash->
 	git reset --hard <--commit hash->
+
+	Changing code on repos of other git profiles
+		use Fork feature
